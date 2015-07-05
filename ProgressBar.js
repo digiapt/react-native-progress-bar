@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react-native');
 var {
   StyleSheet,
@@ -10,11 +12,16 @@ var styles = StyleSheet.create({
   background: {
     backgroundColor: '#bbbbbb',
     height: 5,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    borderRadius: 2
   },
   fill: {
     backgroundColor: '#3b5998',
-    height: 5
+    height: 5,
+    borderRadius: 2
   }
 });
 
@@ -47,11 +54,12 @@ var ProgressBar = React.createClass({
 
     var progress = this.getTweeningValue('progress') || this.props.progress;
 
-    var fillWidth = progress * this.props.style.width;
+    var fillWidth = progress;
 
     return (
       <View style={[styles.background, this.props.backgroundStyle, this.props.style]}>
-        <View style={[styles.fill, this.props.fillStyle, { width: fillWidth }]}/>
+        <View style={[styles.fill, this.props.fillStyle, { flex: fillWidth }]}/>
+        <View style={{flex: (1 - fillWidth)}}/>
       </View>
     );
   },
