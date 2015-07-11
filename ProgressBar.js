@@ -16,12 +16,12 @@ var styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    borderRadius: 2
+    borderRadius: 0
   },
   fill: {
     backgroundColor: '#3b5998',
     height: 5,
-    borderRadius: 2
+    borderRadius: 0
   }
 });
 
@@ -45,7 +45,7 @@ var ProgressBar = React.createClass({
   },
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.progress >= 0 && this.props.progress != prevProps.progress) {
+    if (this.props.progress >= 0 && this.props.progress !== prevProps.progress) {
       this.update(this.props.progress);
     }
   },
